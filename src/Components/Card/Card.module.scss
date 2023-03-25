@@ -1,4 +1,7 @@
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border: 1px solid var(--border);
   padding: 30px;
   width: 210px;
@@ -9,6 +12,9 @@
   &:hover {
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.06);
     transform: translateY(-5px);
+  }
+  .plus{
+    cursor: pointer;
   }
   .favorite {
     position: absolute;
@@ -22,8 +28,8 @@
   .cardBottom {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     margin-top: 10px;
+
   }
   .cardPriceBtn {
     display: flex ;
