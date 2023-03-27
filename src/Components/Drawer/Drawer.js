@@ -19,7 +19,7 @@ function Drawer({ onClose, items = [], onRemove }) {
           <div className={styles.items}>
             {items.map((obj) => (
               
-              <div className={styles.cartItem}>
+              <div key={obj.id} className={styles.cartItem}>
                 <div
                   style={{ backgroundImage: `url(${obj.imgUrl})` }}
                   className={styles.cartItemImg}

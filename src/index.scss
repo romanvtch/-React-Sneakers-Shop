@@ -82,12 +82,12 @@ input {
   width: 200px;
 }
 .sneakers {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  // display: grid;
+  // grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   // grid-gap: 20px;
-  // display: flex;
-  // flex-wrap: wrap;
-  // justify-content:center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:center;
 };
 
 

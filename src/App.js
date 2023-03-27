@@ -13,31 +13,43 @@ function App() {
   const [favorites, setFavorites] = React.useState([]); //Favorite
   const [searchValue, setSearchValue] = React.useState(""); //Search
   const [cartOpened, setCartOpened] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(true); //Loading Cart
 
   React.useEffect(() => {
-    //Запрос товарів
-    axios
-      .get("https://641c8b3b1a68dc9e460c4cfd.mockapi.io/items")
-      .then((res) => {
-        setItems(res.data);
-      });
-    //Запрос корзини
-    axios
-      .get("https://641c8b3b1a68dc9e460c4cfd.mockapi.io/cart")
-      .then((res) => {
-        setCartItems(res.data);
-      });
-    //Запрос Вподабані
-    axios
-      .get("https://641c8b3b1a68dc9e460c4cfd.mockapi.io/favorites")
-      .then((res) => {
-        setFavorites(res.data);
-      });
+    async function fetchData() {
+      const itemsResponse = await axios.get(
+        "https://641c8b3b1a68dc9e460c4cfd.mockapi.io/items"
+      ); //Запрос товарів
+      const cartResponse = await axios.get(
+        "https://641c8b3b1a68dc9e460c4cfd.mockapi.io/cart"
+      ); //Запрос корзини
+
+      const favoritestResponse = await axios.get(
+        "https://641c8b3b1a68dc9e460c4cfd.mockapi.io/favorites"
+      ); //Запрос Вподабані
+
+      setIsLoading(false);
+      setCartItems(cartResponse.data);
+      setFavorites(favoritestResponse.data);
+      setItems(itemsResponse.data);
+    }
+
+    fetchData();
   }, []);
 
   const onAddToCart = (obj) => {
-    axios.post("https://641c8b3b1a68dc9e460c4cfd.mockapi.io/cart", obj);
-    setCartItems((prev) => [...prev, obj]);
+    console.log(obj);
+    if (cartItems.find((item) => Number(item.id) === Number(obj.id))) {
+      axios.delete(
+        `https://641c8b3b1a68dc9e460c4cfd.mockapi.io/cart/${obj.id}`
+      );
+      setCartItems((prev) =>
+        prev.filter((item) => Number(item.id) !== Number(obj.id))
+      );
+    } else {
+      axios.post("https://641c8b3b1a68dc9e460c4cfd.mockapi.io/cart", obj);
+      setCartItems((prev) => [...prev, obj]);
+    }
   };
 
   const onRemoveItem = (id) => {
@@ -59,7 +71,7 @@ function App() {
         setFavorites((prev) => [...prev, data]);
       }
     } catch {
-      alert('Не вдалось добавити в збережені')
+      alert("Не вдалось добавити в збережені");
     }
   };
   //Search
@@ -84,17 +96,16 @@ function App() {
           element={
             <Home
               items={items}
+              cartItems={cartItems}
               searchValue={searchValue}
               setSearchValue={setSearchValue}
               onChangeSearchInput={onChangeSearchInput}
               onAddToFavorite={onAddToFavorite}
               onAddToCart={onAddToCart}
+              isLoading={isLoading}
             />
           }
         />
-      </Routes>
-
-      <Routes>
         <Route
           path="/favorites"
           element={
