@@ -4,7 +4,7 @@
   justify-content: space-between;
   border: 1px solid var(--border);
   padding: 30px;
-  width: 210px;
+  max-width: 210px;
   border-radius: 40px;
   transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
   margin: 15px;
@@ -13,6 +13,10 @@
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.06);
     transform: translateY(-5px);
   }
+  .img{
+    max-width: 133px;
+  }
+  
   .plus{
     cursor: pointer;
   }
@@ -45,3 +49,5 @@
     width: 32px;
   }
 }
+
+

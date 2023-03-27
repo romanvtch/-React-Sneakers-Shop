@@ -52,6 +52,7 @@ body {
     font-size: 13px;
   }
 }
+
 .titleAndSearch {
   margin-bottom: 40px;
   display: flex;
@@ -64,6 +65,15 @@ body {
   border-radius: 10px;
   border: 1px solid #f3f3f3;
   padding: 0 15px;
+  position: relative;
+
+  .clear{
+    cursor: pointer;
+    position: absolute;
+    height: 10px;
+    opacity: 0.5;
+    right: 10px;
+  }
 }
 input {
   border: 0;
@@ -74,7 +84,10 @@ input {
 .sneakers {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  grid-gap: 20px;
+  // grid-gap: 20px;
+  // display: flex;
+  // flex-wrap: wrap;
+  // justify-content:center;
 };
 
 

@@ -17,6 +17,7 @@
       margin: 0;
     }
     h3 {
+      color: rgba(0, 0, 0, 1);
       text-transform: uppercase;
     }
     p {
@@ -42,5 +43,23 @@
         }
         
       }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+    }
+  
+    .headerLeft {
+      margin-bottom: 20px;
+    }
+  
+    .headerRight {
+      margin-top: 20px;
+    }
+  
+    .headerRight li:first-child {
+      margin-left: 0;
     }
   }
