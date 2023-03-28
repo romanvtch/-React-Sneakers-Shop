@@ -3,16 +3,18 @@ import axios from "axios";
 import { Routes, Route } from "react-router-dom";
 import Header from "./Components/Header";
 import Drawer from "./Components/Drawer/Drawer";
-
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
+import AppContext from "./context"
+
+
 
 function App() {
   const [items, setItems] = React.useState([]); //Items{Goods}
   const [cartItems, setCartItems] = React.useState([]); //Cart
   const [favorites, setFavorites] = React.useState([]); //Favorite
   const [searchValue, setSearchValue] = React.useState(""); //Search
-  const [cartOpened, setCartOpened] = React.useState(false);
+  const [cartOpened, setCartOpened] = React.useState(false); //Drawer
   const [isLoading, setIsLoading] = React.useState(true); //Loading Cart
 
   React.useEffect(() => {
@@ -79,8 +81,13 @@ function App() {
     setSearchValue(event.target.value);
   };
 
+  const isItemAdded = (id) => {
+    return cartItems.some((obj) => Number(obj.id) === Number(id));
+  };
+
   return (
-    <div className="wrapper">
+    <AppContext.Provider value={{ items, cartItems, favorites, isItemAdded}}>
+      <div className="wrapper">
       {cartOpened && (
         <Drawer
           onRemove={onRemoveItem}
@@ -109,11 +116,12 @@ function App() {
         <Route
           path="/favorites"
           element={
-            <Favorites items={favorites} onAddToFavorite={onAddToFavorite} />
+            <Favorites  onAddToFavorite={onAddToFavorite} />
           }
         />
       </Routes>
     </div>
+    </AppContext.Provider>
   );
 }
 
