@@ -1,33 +1,36 @@
 import React from "react";
-import Card from "../Components/Card/Card";
-import AppContext from "../context"
+import Card from "../Component/Card/Card";
+import { AppContext } from "../App";
+import Info from "../Component/Info/Info";
 
-function Favorites({ onAddToFavorite }) {
-
-  const {favorites} = React.useContext(AppContext);
-
+export default function Favorites({ onAddToCart}) {
+  const {favorites, onAddToFavorite} = React.useContext(AppContext);
 
   return (
     <div className="content">
-      <div className="titleAndSearch">
+      <div className="titleSearch">
         <h1>Мої збережені</h1>
       </div>
 
-      <div className="sneakers">
+      {favorites.length > 0 ? <div className="sneakers">
         {favorites.map((item, index) => (
           <Card
             key={index}
             // id={item.id}
             // title={item.title}
+            // image={item.image}
             // price={item.price}
-            // imgUrl={item.imgUrl}
             favorited={true}
             onFavorite={onAddToFavorite}
+            onPlus={(obj) => onAddToCart(obj)}
             {...item}
           />
         ))}
-      </div>
+      </div> : 
+      <Info
+      title='Збережених немає :('
+      image='/img/favorites/smile.png'
+      description='Ви нічого не додавали до закладок.'/>}
     </div>
   );
 }
-export default Favorites;

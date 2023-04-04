@@ -7,89 +7,67 @@
   padding: 0;
   font-family: "inter", system-ui;
 }
-
-:root {
-  --gray: rgba(157, 157, 157, 1);
-  --darkgrey: rgba(92, 92, 92, 1);
-  --wrshadow: rgba(0, 0, 0, 0.05);
-  --border: rgba(234, 234, 234, 1);
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-// ::-webkit-scrollbar-thumb {
-//   border-radius: 5px;
-//   background-color: var(--darkblue);
-// }
-// ::-webkit-scrollbar-track {
-//   background-color: var(--dark);
-
-// }
-
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #e7f6ff;
 }
-
 .wrapper {
   background: #ffffff;
-  box-shadow: 0px 10px 20px var(--wrshadow);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
   border-radius: 20px;
   max-width: 1080px;
   margin: 50px auto;
 }
 
+// .sideBar{
+//   visibility: hidden;
+// }
+
 .content {
   padding: 40px;
-  span {
-    opacity: 0.5;
-    font-size: 13px;
-    text-transform: uppercase;
-  }
-  b {
-    font-size: 13px;
-  }
 }
 
-.titleAndSearch {
-  margin-bottom: 40px;
+.titleSearch {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-}
-.search-block {
-  display: flex;
   align-items: center;
-  border-radius: 10px;
-  border: 1px solid #f3f3f3;
-  padding: 0 15px;
-  position: relative;
+  margin-bottom: 40px;
 
-  .clear{
-    cursor: pointer;
-    position: absolute;
-    height: 10px;
-    opacity: 0.5;
-    right: 10px;
+  .search {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid rgba(243, 243, 243, 1);
+    padding: 0 14px;
+    position: relative;
+
+    input {
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      width: 200px;
+    }
+    .clear{
+      position: absolute;
+      right: 10px;
+      opacity: 0.5;
+      cursor: pointer;
+
+      &:hover{
+        opacity: 0.8;
+      }
+    }
   }
 }
-input {
-  border: 0;
-  padding: 13px;
-  font-size: 16px;
-  width: 200px;
-}
+
 .sneakers {
-  // display: grid;
-  // grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  // grid-gap: 20px;
   display: flex;
   flex-wrap: wrap;
-  justify-content:center;
-};
-
+  justify-content: center;
+  
+  
+}
 
 
 

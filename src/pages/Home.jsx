@@ -1,53 +1,32 @@
 import React from "react";
-import Card from "../Components/Card/Card";
+import Card from "../Component/Card/Card";
 
-function Home({
+export default function Home({
   items,
   searchValue,
   setSearchValue,
   onChangeSearchInput,
   onAddToFavorite,
   onAddToCart,
-  isLoading,
 }) {
 
-  const renderItems = () => {
-    return (
-      isLoading
-        ? [...Array(12)]
-        : items.filter((item) =>
-            item.title.toLowerCase().includes(searchValue.toLowerCase())
-          )
-    ).map((item, index) => (
-      <Card
-        key={index}
-        // title={item.title}
-        // price={item.price}
-        // imgUrl={item.imgUrl}
-        onFavorite={(obj) => onAddToFavorite(obj)}
-        onPlus={(obj) => onAddToCart(obj)}
-        loading={isLoading}
-        {...item}
-      />
-    ));
-  };
+
+
   return (
     <div className="content">
-      <div className="titleAndSearch">
+      <div className="titleSearch">
         <h1>
-          {searchValue ? `Пошук по запросу: ${searchValue}` : "Всі товари"}
+          {searchValue ? `Пошук по запросу: ${searchValue}` : "Усі товари"}
         </h1>
-        <div className="search-block">
-          <img src="/img/search.svg" alt="Search" />
+        <div className="search">
+          <img src="/img/search.svg" alt="search" />
           {searchValue && (
             <img
-              onClick={() => {
-                setSearchValue("");
-              }}
-              height={14}
+              onClick={() => setSearchValue("")}
               className="clear"
-              src="/img/close.png"
-              alt="Clear"
+              width={16}
+              src="/img/drawer/close.svg"
+              alt="clear"
             />
           )}
           <input
@@ -58,8 +37,24 @@ function Home({
         </div>
       </div>
 
-      <div className="sneakers">{renderItems()}</div>
+      <div className="sneakers">
+        {items
+          .filter((item) =>
+            item.title.toLowerCase().includes(searchValue.toLowerCase())
+          )
+          .map((item, index) => (
+            <Card
+              key={index}
+              // id={item.id}
+              // title={item.title}
+              // image={item.image}
+              // price={item.price}
+              onFavorite={(obj) => onAddToFavorite(obj)}
+              onPlus={(obj) => onAddToCart(obj)}
+              {...item}//secondWay
+            />
+          ))}
+      </div>
     </div>
   );
 }
-export default Home;
