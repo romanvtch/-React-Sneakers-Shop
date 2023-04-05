@@ -19,13 +19,13 @@ export default function Home({
           {searchValue ? `Пошук по запросу: ${searchValue}` : "Усі товари"}
         </h1>
         <div className="search">
-          <img src="/img/search.svg" alt="search" />
+          <img src="img/search.svg" alt="search" />
           {searchValue && (
             <img
               onClick={() => setSearchValue("")}
               className="clear"
               width={16}
-              src="/img/drawer/close.svg"
+              src="img/drawer/close.svg"
               alt="clear"
             />
           )}

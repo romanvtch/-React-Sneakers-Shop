@@ -39,7 +39,7 @@ export default function Orders() {
       </div> :
        <Info
        title='У вас немає замовлень :('
-       image='/img/orders/smile.png'
+       image='img/orders/smile.png'
        description='Оформіть хоча б одне замовлення.'/>}
     </div>
   );
