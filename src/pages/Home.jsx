@@ -19,7 +19,7 @@ export default function Home({
           {searchValue ? `Пошук по запросу: ${searchValue}` : "Усі товари"}
         </h1>
         <div className="search">
-          <img src="img/search.svg" alt="search" />
+        <img src={process.env.PUBLIC_URL + '/img/search.svg'} alt="search" />
           {searchValue && (
             <img
               onClick={() => setSearchValue("")}

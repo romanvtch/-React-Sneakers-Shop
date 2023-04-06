@@ -120,7 +120,7 @@ function App() {
 
         <Routes>
           <Route
-            path="/"
+            path="/react-shop"
             element={
               <Home
                 items={items}

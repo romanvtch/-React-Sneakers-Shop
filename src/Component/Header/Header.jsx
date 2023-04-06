@@ -9,9 +9,9 @@ export default function Header(props) {
  
   return (
     <header>
-      <Link to="/">
+      <Link to="/react-shop">
         <div className="headerLeft">
-          <img src="img/header/logo.svg" alt="logo" />
+          <img src={process.env.PUBLIC_URL + '/img/header/logo.svg'} alt="logo" />
           <div>
             <h3>React Sneakers</h3>
             <p>Магазин найкращих кросівок</p>
@@ -20,17 +20,17 @@ export default function Header(props) {
       </Link>
       <ul className="headerRight">
         <li onClick={props.onClickCart}>
-          <img className="cart" src="img/header/shoppingCard.svg" alt="shoppingCard" />
+        <img className="cart" src={process.env.PUBLIC_URL + '/img/header/shoppingCard.svg'} alt="shoppingCard" />
           <span>{totalPrice} грн.</span>
         </li>
         <li>
           <Link to="favorites">
-            <img src="img/header/favorites.svg" alt="favorites" />
+          <img src={process.env.PUBLIC_URL + '/img/header/favorites.svg'} alt="favorites" />
           </Link>
         </li>
         <li>
           <Link to="orders">
-          <img src="img/header/user.svg" alt="user" />
+          <img src={process.env.PUBLIC_URL + '/img/header/user.svg'} alt="user" />
           </Link>
         </li>
       </ul>
